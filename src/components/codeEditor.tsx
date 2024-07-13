@@ -81,9 +81,11 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange }) => {
       height="100%" // Adjust height as needed
       setOptions={{
         showGutter: true,
+        fontFamily : 'Roboto Mono'
       }}
       onLoad={handleEditorLoaded}
       showPrintMargin={false}
+        className="roboto-mono-regular"
     />
     </div>
   );
