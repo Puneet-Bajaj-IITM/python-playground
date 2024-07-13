@@ -3,6 +3,7 @@ import { useStore } from "../store";
 import { SelectedFileContext } from "../store/context/SelectedFileContext";
 import { Button } from "./ui/button";
 import { Download, Play } from "lucide-react";
+import Settings from "./settings";
 
 interface TopNavProps {
   handleRunCode: () => Promise<void>;
@@ -42,12 +43,13 @@ export default function TopNav({ handleRunCode, handleSaveCode }: TopNavProps) {
     <section className="flex gap-2 justify-between p-2 bg-[#FFFFFF]">
       <div className="flex gap-2 justify-between items-center grow">
         <text style={{ color: 'black', fontSize: '22px', fontWeight: '700' }}>Python Playground</text>
+        <Settings />
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 
-          <Button variant="outline" onClick={handleDownloadCode}>
+          {/* <Button variant="outline" onClick={handleDownloadCode}>
             <Download className="h-5 w-5" />
             <span className="ml-2">Download</span>
-          </Button>
+          </Button> */}
           {SelectedFileState.value.data == 'mymodule' &&
             <Button style={{ backgroundColor: 'green', marginLeft: '10px' }} onClick={handleSaveCode} variant="secondary">
               <Download className="h-5 w-5" />
@@ -68,7 +70,7 @@ export default function TopNav({ handleRunCode, handleSaveCode }: TopNavProps) {
           <Replace className="h-5 w-5" />
           <span className="ml-2 hidden md:inline">Direction</span>
         </Button> */}
-        {/* <Settings /> */}
+      
       </div>
     </section>
   );

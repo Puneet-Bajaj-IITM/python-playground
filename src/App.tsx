@@ -18,6 +18,7 @@ import { MainContext } from "./store/context/MainContext";
 import { ModuleContext } from "./store/context/ModuleContext";
 import { SelectedFileContext } from "./store/context/SelectedFileContext";
 import { useLocation } from 'react-router-dom';
+import CodeEditor from "./components/codeEditor";
 
 function App() {
   const { loading, handleRunCode, handleSaveCode } = usePyodide();
@@ -80,13 +81,30 @@ function App() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
 
+  function handleCodeOnChange(e: string | undefined) {
+    if (e) {
+      if (SelectedFileState.value.data == 'data' || SelectedFileState.value.data == 'readme') {
+
+      } else {
+        if (SelectedFileState.value.data == 'main') {
+          setMain(e)
+        }
+        if (SelectedFileState.value.data == 'mymodule') {
+          setModule(e)
+        }
+        setCode(e);
+      }
+
+    }
+  }
+
   return (
     <main className="h-screen flex flex-col">
       <div className="flex-1 flex">
         <div className="w-4/5 bg-white flex flex-col">
           <TopNav handleRunCode={async () => await handleRunCode(code)} handleSaveCode={async () => await handleSaveCode('mymodule.py', code)} />
           <div className="flex flex-1">
-            <div className="bg-[#1E1E1E] border-2 border-[#333333] border-t-0 border-l-0 rounded-tl-md w-52 flex-shrink-0">
+            <div className="bg-[#282C34] border-2 border-[#333333] border-t-0 border-l-0 rounded-tl-md w-52 flex-shrink-0">
               <p className="text-white text-xl font-bold p-5 text-center">Files</p>
               <ul className="border-t-2 border-[#333333]">
                 <li className="mt-2 p-5">
@@ -115,7 +133,8 @@ function App() {
             <div className="flex flex-1 overflow-hidden border-2 border-[#333333] border-t-0 border-r-0 rounded-tr-md">
               <ResizablePanelGroup direction="vertical" className="w-full h-full">
                 <ResizablePanel defaultSize={65} className="overflow-hidden">
-                  <Editor />
+                  {/* <Editor /> */}
+                  <CodeEditor initialCode={code} onChange={handleCodeOnChange} />
                 </ResizablePanel>
                 <ResizableHandle />
                 <ResizablePanel defaultSize={35} className="overflow-hidden">

@@ -9,6 +9,10 @@ import { DataContext } from "../store/context/DataContext";
 import { SelectedFileContext } from "../store/context/SelectedFileContext";
 import { MainContext } from "../store/context/MainContext";
 import { ModuleContext } from "../store/context/ModuleContext";
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/mode/python/python'; // Import Python mode
+import 'codemirror/theme/material.css'; // Optional theme
+
 
 export default function Editor() {
   const { code, setCode } = useStore();
@@ -69,6 +73,8 @@ export default function Editor() {
     }
   }
 
+  
+
   async function handleEditorLoaded() {
     setCode(MainState.value.data)
     try {
@@ -100,6 +106,10 @@ export default function Editor() {
         onChange={handleCodeOnChange}
         loading={<Loader text="Loading Editor" />}
         onMount={() => handleEditorLoaded()}
+        options={{
+          "formatOnPaste": true,
+          "formatOnType": true,
+        }}
       />
       <Separator />
     </div>
