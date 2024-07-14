@@ -42,7 +42,7 @@ export default function TopNav({ handleRunCode, handleSaveCode }: TopNavProps) {
   return (
     <section className="flex gap-2 justify-between p-2 bg-[#FFFFFF]">
       <div className="flex gap-2 justify-between items-center grow">
-        <text style={{ color: 'black', fontSize: '22px', fontWeight: '700' }}>Python Playground</text>
+        <span style={{ color: 'black', fontSize: '22px', fontWeight: '700' }}>Python Playground</span>
         <Settings />
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 

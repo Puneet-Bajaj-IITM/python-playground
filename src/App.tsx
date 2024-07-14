@@ -19,6 +19,7 @@ import { ModuleContext } from "./store/context/ModuleContext";
 import { SelectedFileContext } from "./store/context/SelectedFileContext";
 import { useLocation } from 'react-router-dom';
 import CodeEditor from "./components/codeEditor";
+import MirrorEditor from "./components/codeMirror";
 
 function App() {
   const { loading, handleRunCode, handleSaveCode } = usePyodide();
@@ -134,7 +135,8 @@ function App() {
               <ResizablePanelGroup direction="vertical" className="w-full h-full">
                 <ResizablePanel defaultSize={65} className="overflow-hidden">
                   {/* <Editor /> */}
-                  <CodeEditor initialCode={code} onChange={handleCodeOnChange} />
+                  {/* <CodeEditor initialCode={code} onChange={handleCodeOnChange} /> */}
+                  <MirrorEditor onChange={handleCodeOnChange}/>
                 </ResizablePanel>
                 <ResizableHandle />
                 <ResizablePanel defaultSize={35} className="overflow-hidden">
