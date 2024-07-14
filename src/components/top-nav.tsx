@@ -4,19 +4,23 @@ import { SelectedFileContext } from "../store/context/SelectedFileContext";
 import { Button } from "./ui/button";
 import { Download, Play } from "lucide-react";
 import Settings from "./settings";
+import { JSONContext } from "../store/context/JSONContext";
 
 interface TopNavProps {
   handleRunCode: () => Promise<void>;
   handleSaveCode: () => Promise<void>
 }
 
-export default function TopNav({ handleRunCode, handleSaveCode }: TopNavProps) {
+export default function TopNav({ handleRunCode, handleSaveCode   }: TopNavProps) {
   const { code } = useStore();
   const selectedfilecontext = useContext(SelectedFileContext);
-  if (!selectedfilecontext) {
+  const jsoncontext = useContext(JSONContext)
+  if (!selectedfilecontext || !jsoncontext) {
     throw new Error('ReadmeContext not found');
   }
   const { state: SelectedFileState } = selectedfilecontext;
+  const { state: JSONState } = jsoncontext;
+  
 
 
   // function handleChangeDirection() {
@@ -42,8 +46,8 @@ export default function TopNav({ handleRunCode, handleSaveCode }: TopNavProps) {
   return (
     <section className="flex gap-2 justify-between p-2 bg-[#FFFFFF]">
       <div className="flex gap-2 justify-between items-center grow">
-        <span style={{ color: 'black', fontSize: '22px', fontWeight: '700' }}>Python Playground</span>
-        <Settings />
+        <span style={{ color: 'black', fontSize: '22px', fontWeight: '700' }}>{JSONState.value.data ? JSONState.value.data.appname.Playgorund_Title : ''}</span>
+      s  {/* <Settings /> */}
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 
           {/* <Button variant="outline" onClick={handleDownloadCode}>
@@ -57,7 +61,7 @@ export default function TopNav({ handleRunCode, handleSaveCode }: TopNavProps) {
             </Button>}
 
           <Button style={{ backgroundColor: '#E1C547', marginLeft: '10px' }} onClick={handleRunCode} variant="secondary">
-            <span style={{ color: 'black' }} className="mr-2">Run the code</span>
+            <span style={{ color: 'black' }} className="mr-2">Execute</span>
             <Play style={{ color: 'black' }} className="h-5 w-5" />
           </Button>
         </div>

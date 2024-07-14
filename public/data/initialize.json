@@ -1,0 +1,21 @@
+{
+    "appname" : {
+        "editor_theme" : "Github Dark",
+        "Playgorund_Title" : "Loren ipsum",
+        "dir_load" : "/data",
+        "ext_url" : "https://google.com",
+        "playground_instructions" : [
+            {
+                "Step1" : "Step 1 instructions",
+                "Step2" : "Step 2 instructions"
+            }
+        ],
+        "blog_url" : "https://blogurl.com/fsdf",
+        "Task_instructions" : [
+            {
+                "Task1" : "Task 1 instructions",
+                "Task2" : "Task 2 instructions"
+            }
+        ]
+    }
+}

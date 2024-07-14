@@ -6,6 +6,7 @@ import { ReadmeContext } from "../store/context/ReadmeContext";
 import { DataContext } from "../store/context/DataContext";
 import { MainContext } from "../store/context/MainContext";
 import { darkTheme } from "./ui/themes";
+import { JSONContext } from "../store/context/JSONContext";
 
 interface CodeEditorProps {
     onChange: (code: string) => void;
@@ -16,6 +17,7 @@ const MirrorEditor: React.FC<CodeEditorProps> = ({ onChange }) => {
     const readmecontext = useContext(ReadmeContext);
     const datacontext = useContext(DataContext);
     const maincontext = useContext(MainContext);
+    const jsoncontext = useContext(JSONContext)
 
     if (!maincontext) {
         throw new Error('ReadmeContext not found');
@@ -25,22 +27,24 @@ const MirrorEditor: React.FC<CodeEditorProps> = ({ onChange }) => {
         throw new Error('ReadmeContext not found');
     }
 
-    if (!datacontext) {
+    if (!datacontext || !jsoncontext) {
         throw new Error('ReadmeContext not found');
     }
 
     const { setReadme } = readmecontext;
     const { setData } = datacontext;
     const { state: MainState } = maincontext;
+    const { state: JSONState } = jsoncontext;
 
     useEffect(() => {
+        if(JSONState.value.data)
         handleEditorLoaded()
-    }, [])
+    }, [JSONState.value.data])
 
     async function handleEditorLoaded() {
 
         try {
-            const response = await fetch('/python-playground/readme.txt');
+            const response = await fetch(`/python-playground/${JSONState.value.data.appname.dir_load}/readme.txt`);
             const text = await response.text();
             setReadme(text);
 
@@ -48,7 +52,7 @@ const MirrorEditor: React.FC<CodeEditorProps> = ({ onChange }) => {
             console.error('Error fetching readme.txt:', error);
         }
         try {
-            const response = await fetch('/python-playground/data.csv');
+            const response = await fetch(`/python-playground/${JSONState.value.data.appname.dir_load}/data.csv`);
             const text = await response.text();
             setData(text)
 
@@ -82,12 +86,10 @@ const MirrorEditor: React.FC<CodeEditorProps> = ({ onChange }) => {
                     lineNumbers: true,
                     highlightActiveLine: false,
                 }}
-                title="main"
                 style={{
                     outline: "none",
                     fontSize: '16px',
                     backgroundColor: '#282C34',
-                    height:'100%'
                 }}
 
             />

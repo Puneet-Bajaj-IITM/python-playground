@@ -43,7 +43,7 @@ export const darkTheme = createTheme({
   theme: "dark",
   settings: {
     ...defaultSettings,
-    foreground: "#282C34",
+    foreground: "#FFFFFF",
     gutterForeground: "#fff",
     selection: "rgba(255,255,255,0.1)",
   },
