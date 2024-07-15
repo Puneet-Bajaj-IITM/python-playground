@@ -1,9 +1,11 @@
 {
     "appname" : {
-        "editor_theme" : "Github Dark",
+        "editor_theme" : "VS Code",
         "Playgorund_Title" : "Loren ipsum",
         "dir_load" : "/data",
         "ext_url" : "https://google.com",
+        "report_issue" : "https://www.facebook.com",
+
         "playground_instructions" : [
             {
                 "Step1" : "Step 1 instructions",

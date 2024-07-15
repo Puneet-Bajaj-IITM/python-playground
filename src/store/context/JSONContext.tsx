@@ -14,7 +14,7 @@ interface JSONContextType {
 export const JSONContext = createContext<JSONContextType | undefined>(undefined);
 
 const JSONContextProvider = ({ children }: JSONContextProviderProps) => {
-  const [state, dispatch] = useReducer(myJSONReducer, { value: { data: { appname: { editor_theme: '', Playgorund_Title: '', dir_load: '', ext_url: '', playground_instructions: [], blog_url: '', Task_instructions: [] } } } });
+  const [state, dispatch] = useReducer(myJSONReducer, { value: { data: { appname: { editor_theme: '', Playgorund_Title: '', dir_load: '', ext_url: '', report_issue : '', playground_instructions: [], blog_url: '', Task_instructions: [] } } } });
 
   const setJSON = (data: AppData) => {
     dispatch({ type: SET_JSON, payload: { data } });

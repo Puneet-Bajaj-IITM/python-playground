@@ -6,6 +6,7 @@ export interface AppData {
     Playgorund_Title: string;
     dir_load: string;
     ext_url: string;
+    report_issue : string
     playground_instructions: Record<string, string>[];
     blog_url: string;
     Task_instructions: Record<string, string>[];

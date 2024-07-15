@@ -1,5 +1,6 @@
 import { createTheme, Settings } from "@uiw/codemirror-themes";
 import { tags } from "@lezer/highlight";
+import { aura } from "../../themeData/themes/aura";
 
 const defaultSettings: Settings = {
   background: "#282C34",
@@ -64,3 +65,4 @@ export const darkTheme = createTheme({
     { tag: tags.typeName, color: "#5cabff" },
   ],
 });
+

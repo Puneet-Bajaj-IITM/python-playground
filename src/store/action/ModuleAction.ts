@@ -1,4 +1,4 @@
-export const SET_MODULE = 'SET_DATAMODULE';
+export const SET_MODULE = 'SET_MODULE';
 
 export interface SetModuleAction {
   type: typeof SET_MODULE;

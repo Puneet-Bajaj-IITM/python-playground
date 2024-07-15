@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/ReactToastify.css'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import JSONContextProvider from "./store/context/JSONContext.tsx";
+import ThemeContextProvider from "./store/context/ThemeContext.tsx";
 
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -21,12 +22,14 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <MainContextProvider>
             <ModuleContextProvider>
               <ReadmeContextProvider>
-                <ToastContainer />
-                <Router>
-                  <Routes>
-                    <Route path="/python-playground" element={<App />} />
-                  </Routes>
-                </Router>
+                <ThemeContextProvider>
+                  <ToastContainer />
+                  <Router>
+                    <Routes>
+                      <Route path="/python-playground" element={<App />} />
+                    </Routes>
+                  </Router>
+                </ThemeContextProvider>
               </ReadmeContextProvider>
             </ModuleContextProvider>
           </MainContextProvider>
