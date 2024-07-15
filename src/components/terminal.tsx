@@ -42,7 +42,7 @@ export default function Terminal({ handleRunCode, loading }: TerminalProps) {
         <Loader text="Downloading Python" />
       ) : (
         <div style={{display:'flex', flexDirection:'column',}}>
-        <text style={{fontSize:'24px', fontWeight:'bold'}}>Output Message</text>
+        <span style={{fontSize:'24px', fontWeight:'bold'}}>Output Message</span>
         <code
           className={
             "w-full font-mono text-sm " +

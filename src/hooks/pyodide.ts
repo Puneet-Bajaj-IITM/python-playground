@@ -32,7 +32,6 @@ export const usePyodide = () => {
         });
         if (SelectedFileState.value.data == "main") {
           const tempCode = `import importlib \nimport mymodule \nimportlib.reload(mymodule)\n${code}`;
-          console.log(tempCode)
           await pyodide.runPythonAsync(tempCode);
         } else {
           await pyodide.runPythonAsync(code);
